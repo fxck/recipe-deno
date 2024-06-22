@@ -1,0 +1,15 @@
+zerops:
+  - setup: app
+    build:
+      base: deno@latest
+      buildCommands:
+        - deno cache src/deps.ts
+        - deno bundle src/main.ts dist/bundle.js
+      deployFiles:
+        - dist
+    run:
+      base: deno@latest
+      ports:
+        - port: 8000
+          httpSupport: true
+      start: deno run --allow-net dist/bundle.js
