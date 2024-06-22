@@ -1,7 +1,7 @@
-import { Application, Router } from "./deps.ts";
+import { Application, Router, RouterContext } from "./deps.ts";
 
 const router = new Router();
-router.get("/", (context) => {
+router.get("/", (context: RouterContext) => {
   context.response.body = "Hello, World!";
 });
 

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "esnext"]
+  },
+  "importMap": "./import_map.json",
+  "lint": {
+    "files": {
+      "include": ["src/"]
+    }
+  },
+  "tasks": {
+    "start": "deno run --allow-net --allow-env src/main.ts",
+    "build": "deno run --allow-net --allow-read --allow-write --allow-env build.js"
+  }
+}
