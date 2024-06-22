@@ -5,9 +5,9 @@ await esbuild.build({
   entryPoints: ["./src/main.ts"],
   bundle: true,
   outfile: "./dist/bundle.js",
-  plugins: denoPlugins({
+  plugins: [...denoPlugins({
     importMapURL: new URL("./import_map.json", import.meta.url)
-  }),
+  })],
   format: "esm",
   platform: "neutral",
 });
