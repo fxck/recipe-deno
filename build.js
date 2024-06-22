@@ -1,15 +1,12 @@
-import * as esbuild from "https://deno.land/x/esbuild@v0.21.5/mod.js";
-import { denoPlugin } from "https://deno.land/x/esbuild_deno_loader@0.6.0/mod.ts";
+import * as esbuild from "npm:esbuild@0.20.2";
+import { denoPlugins } from "jsr:@luca/esbuild-deno-loader@^0.10.3";
 
-await esbuild.build({
-  entryPoints: ["./src/main.ts"],
-  bundle: true,
+const result = await esbuild.build({
+  plugins: [...denoPlugins()],
+  entryPoints: ["https://deno.land/std@0.185.0/bytes/mod.ts"],
   outfile: "./dist/bundle.js",
-  plugins: [denoPlugin({
-    importMapURL: new URL("./import_map.json", import.meta.url)
-  })],
+  bundle: true,
   format: "esm",
-  platform: "neutral",
 });
 
 esbuild.stop();
